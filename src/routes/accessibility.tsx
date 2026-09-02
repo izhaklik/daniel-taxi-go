@@ -10,7 +10,7 @@ export const Route = createFileRoute("/accessibility")({
       {
         name: "description",
         content:
-          "הצהרת הנגישות של אתר דניאל taxi — מונית גדולה עד 8 נוסעים. האתר נבנה בהתאם לתקן הישראלי 5568 ולהנחיות WCAG 2.1 ברמה AA.",
+          "הצהרת הנגישות של אתר דניאל taxi — מונית גדולה עד 6 נוסעים. האתר נבנה בהתאם לתקן הישראלי 5568 ולהנחיות WCAG 2.1 ברמה AA.",
       },
       { property: "og:title", content: "הצהרת נגישות | דניאל taxi" },
       {
@@ -72,7 +72,7 @@ function AccessibilityPage() {
         <section className="mt-6 rounded-2xl bg-card p-5 shadow-[0_2px_14px_rgba(0,0,0,0.06)]">
           <h2 className="text-xl font-bold">נגישות השירות</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            הרכב הוא {CONFIG.vehicle} עד 8 נוסעים. ניתן לתאם מראש סיוע בעלייה וירידה מהרכב,
+            הרכב הוא {CONFIG.vehicle} עד 6 נוסעים. ניתן לתאם מראש סיוע בעלייה וירידה מהרכב,
             מקום לאחסון עזרי הליכה, וכן הזמנה טלפונית או בוואטסאפ למי שמתקשה בשימוש באתר.
             הנהג דובר עברית ואנגלית.
           </p>

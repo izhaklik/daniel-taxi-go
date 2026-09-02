@@ -38,7 +38,7 @@ import {
  */
 export const EN = {
   businessName: "Daniel Taxi",
-  tagline: "Large taxi for up to 8 passengers",
+  tagline: "Large taxi for up to 6 passengers",
   vehicle: "Hyundai Staria",
   hours: "24/7, all week long",
   areas: ["All of Israel"],
@@ -125,7 +125,7 @@ export const EN = {
   faq: [
     {
       q: "How many passengers fit?",
-      a: "The large taxi is licensed for up to 8 passengers plus the driver, with a comfortable seat and seatbelt for everyone.",
+      a: "The large taxi is licensed for up to 6 passengers plus the driver, with a comfortable seat and seatbelt for everyone.",
     },
     {
       q: "Is there room for luggage?",
@@ -191,13 +191,13 @@ const jsonLd = {
 export const Route = createFileRoute("/en")({
   head: () => ({
     meta: [
-      { title: "Daniel Taxi — Large Taxi for up to 8 Passengers | 24/7 in Israel" },
+      { title: "Daniel Taxi — Large Taxi for up to 6 passengers | 24/7 in Israel" },
       {
         name: "description",
         content:
-          "Large taxi (Hyundai Staria) for up to 8 passengers anywhere in Israel. Ben Gurion Airport transfers, Eilat, events, weddings, tours and employee shuttles. Available 24/7.",
+          "Large taxi (Hyundai Staria) for up to 6 passengers anywhere in Israel. Ben Gurion Airport transfers, Eilat, events, weddings, tours and employee shuttles. Available 24/7.",
       },
-      { property: "og:title", content: "Daniel Taxi — Large Taxi for up to 8 Passengers" },
+      { property: "og:title", content: "Daniel Taxi — Large Taxi for up to 6 passengers" },
       {
         property: "og:description",
         content:
@@ -270,7 +270,7 @@ function LandingPageEn() {
       <header className="relative isolate overflow-hidden">
         <img
           src={heroImage}
-          alt={`${EN.businessName} — ${EN.vehicle}, large taxi for up to 8 passengers`}
+          alt={`${EN.businessName} — ${EN.vehicle}, large taxi for up to 6 passengers`}
           width={1600}
           height={1104}
           className="absolute inset-0 -z-10 h-full w-full object-cover"
@@ -287,7 +287,7 @@ function LandingPageEn() {
             className="mt-5 text-3xl font-black leading-tight sm:text-5xl"
             style={{ color: "#ffffff" }}
           >
-            Large taxi for up to 8 passengers — available 24/7
+            Large taxi for up to 6 passengers — available 24/7
           </h1>
           <p
             className="mt-4 max-w-xl text-base leading-relaxed sm:text-lg"
@@ -593,14 +593,14 @@ function QuoteFormEn() {
               aria-describedby="en-passengers-hint"
               type="number"
               min={1}
-              max={8}
+              max={6}
               value={form.passengers}
               onChange={update("passengers")}
               className={fieldClass}
               placeholder="8"
             />
             <p id="en-passengers-hint" className="mt-1.5 text-xs text-muted-foreground">
-              Up to 8 passengers per ride
+              Up to 6 passengers per ride
             </p>
           </div>
           <button
@@ -660,7 +660,7 @@ function SiteFooterEn() {
             </li>
             <li className="flex items-center gap-2 text-muted-foreground">
               <Users className="size-4 text-brand" aria-hidden="true" />
-              Up to 8 passengers per ride
+              Up to 6 passengers per ride
             </li>
           </ul>
         </div>
