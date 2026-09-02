@@ -45,7 +45,7 @@ export const EN = {
 
   trust: [
     { icon: "badge", title: "Professional licensed driver" },
-    { icon: "price", title: "Price agreed upfront" },
+    { icon: "price", title: "Fast quote on WhatsApp" },
     { icon: "clock", title: "Available 24/7" },
     { icon: "car", title: "Spacious, air-conditioned van" },
     { icon: "languages", title: "Driver speaks Hebrew & English" },
@@ -58,7 +58,7 @@ export const EN = {
       description:
         "Door-to-door pickup with luggage, flight tracking and on-time terminal arrival.",
       message:
-        "Hello, I'd like to book a large taxi to Ben Gurion Airport. Could you send details and a price?",
+        "Hello, I'd like to book a large taxi to Ben Gurion Airport. Could you send me the details?",
     },
     {
       icon: "palm",
@@ -90,7 +90,7 @@ export const EN = {
     {
       icon: "route",
       title: "Intercity rides",
-      description: "Anywhere in Israel to anywhere else, price agreed upfront, no surprises.",
+      description: "Anywhere in Israel to anywhere else, door to door, in full comfort.",
       message: "Hello, I'd like an intercity ride with a large taxi. Could you send details?",
     },
   ],
@@ -113,7 +113,7 @@ export const EN = {
     {
       name: "Ron K.",
       stars: 5,
-      text: "Drove to Eilat with the whole family. Price agreed upfront, no surprises, calm driving all the way.",
+      text: "Drove to Eilat with the whole family. Great vibe and a great driver.",
     },
     {
       name: "Michal D.",
@@ -195,7 +195,7 @@ export const Route = createFileRoute("/en")({
       {
         name: "description",
         content:
-          "Large taxi (Hyundai Staria) for up to 8 passengers anywhere in Israel. Ben Gurion Airport transfers, Eilat, events, weddings, tours and employee shuttles. Price agreed upfront, 24/7.",
+          "Large taxi (Hyundai Staria) for up to 8 passengers anywhere in Israel. Ben Gurion Airport transfers, Eilat, events, weddings, tours and employee shuttles. Available 24/7.",
       },
       { property: "og:title", content: "Daniel Taxi — Large Taxi for up to 8 Passengers" },
       {
@@ -289,7 +289,7 @@ function LandingPageEn() {
           >
             Large taxi service — {EN.vehicle} — anywhere in Israel. Airport transfers, Eilat,
             events, weddings, tours and employee shuttles. The driver speaks Hebrew and English —
-            perfect for tourists. Price agreed upfront.
+            perfect for tourists.
           </p>
           <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <a
@@ -301,7 +301,7 @@ function LandingPageEn() {
               Call now {CONFIG.phoneDisplay}
             </a>
             <a
-              href={waLink("Hello, I'd like to book a large taxi. Could you send details and a price?")}
+              href={waLink("Hello, I'd like to book a large taxi. Could you send me the details?")}
               target="_blank"
               rel="noopener noreferrer"
               className={btnOutline}
@@ -335,7 +335,7 @@ function LandingPageEn() {
 
       {/* Services */}
       <section id="services" className="mx-auto max-w-5xl px-5 py-10">
-        <SectionTitle sub="Pick a service and send a message — we'll reply with a fixed price">
+        <SectionTitle sub="Pick a service and send a message — we'll get back to you right away">
           Our services
         </SectionTitle>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -370,7 +370,7 @@ function LandingPageEn() {
 
       {/* Popular routes */}
       <section id="routes" className="mx-auto max-w-5xl px-5 py-10">
-        <SectionTitle sub="Send a message and we'll reply with a price agreed upfront">
+        <SectionTitle sub="Send a message and we'll get back to you with all the details">
           Popular routes
         </SectionTitle>
         <ul className="grid gap-3 sm:grid-cols-2">
@@ -387,7 +387,7 @@ function LandingPageEn() {
               </div>
               <a
                 href={waLink(
-                  `Hello, I'd like a large taxi from ${route.from} to ${route.to}. Could you confirm the price?`,
+                  `Hello, I'd like a large taxi from ${route.from} to ${route.to}. Could you confirm availability?`,
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
