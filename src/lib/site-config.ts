@@ -8,7 +8,7 @@ export const CONFIG = {
   tagline: "מונית גדולה עד 10 נוסעים",
   phoneDisplay: "054-6633776",
   phoneTel: "+972546633776",
-  whatsapp: "97246633776",
+  whatsapp: "972546633776",
   vehicle: "יונדאי סטריה (Hyundai Staria)",
   hours: "24/7, כל ימות השבוע",
   areas: ["בת ים", "ראשון לציון", "חולון", "אילת"],
