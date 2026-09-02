@@ -115,7 +115,7 @@ const serviceIcons = {
 } as const;
 
 const btnBase =
-  "inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-base font-bold transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring";
+  "inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-base font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground focus-visible:ring-4 focus-visible:ring-ring";
 const btnSolid = `${btnBase} bg-brand text-brand-foreground hover:bg-brand-hover`;
 const btnOutline = `${btnBase} border-2 border-brand bg-transparent text-foreground hover:bg-brand/10`;
 
@@ -132,19 +132,25 @@ function SectionTitle({ children, sub }: { children: string; sub?: string }) {
 function LandingPage() {
   return (
     <div className="min-h-screen bg-background pb-24 md:pb-0">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:inset-inline-start-4 focus:top-4 focus:z-[60] focus:rounded-xl focus:bg-brand focus:px-4 focus:py-3 focus:text-base focus:font-bold focus:text-brand-foreground"
+      >
+        דלגו לתוכן המרכזי
+      </a>
       {/* Language bar */}
-      <div className="bg-card">
+      <nav aria-label="בחירת שפה" className="bg-card">
         <div className="mx-auto flex max-w-5xl justify-end px-5 py-2">
           <Link
             to="/en"
-            className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-bold text-foreground transition-colors hover:bg-brand/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring"
+            className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-bold text-foreground transition-colors hover:bg-brand/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground focus-visible:ring-4 focus-visible:ring-ring"
             aria-label="למעבר לגרסה האנגלית של האתר"
           >
             <Globe className="size-4 text-brand" aria-hidden="true" />
             English
           </Link>
         </div>
-      </div>
+      </nav>
 
       {/* Hero */}
       <header className="relative isolate overflow-hidden">
@@ -171,7 +177,7 @@ function LandingPage() {
           </h1>
           <p
             className="mt-4 max-w-xl text-base leading-relaxed sm:text-lg"
-            style={{ color: "rgba(255,255,255,0.88)" }}
+            style={{ color: "#f5f5f5" }}
           >
             שירות מונית גדולה — {CONFIG.vehicle} — בכל הארץ. נסיעות
             לנתב"ג, אילת, אירועים, חתונות, טיולים והסעות עובדים. נהג דובר עברית ואנגלית,
@@ -201,8 +207,9 @@ function LandingPage() {
         </div>
       </header>
 
+      <main id="main">
       {/* Trust strip */}
-      <Reveal as="section" className="mx-auto max-w-5xl px-5 py-10">
+      <Reveal as="section" aria-label="למה לבחור בנו" className="mx-auto max-w-5xl px-5 py-10">
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-5">
           {CONFIG.trust.map((item) => {
             const Icon = trustIcons[item.icon as keyof typeof trustIcons];
@@ -300,7 +307,7 @@ function LandingPage() {
               as="article"
               className="rounded-2xl bg-card p-5 shadow-[0_2px_14px_rgba(0,0,0,0.06)]"
             >
-              <div className="flex gap-0.5" aria-label={`דירוג ${item.stars} מתוך 5`}>
+              <div className="flex gap-0.5" role="img" aria-label={`דירוג ${item.stars} מתוך 5`}>
                 {Array.from({ length: item.stars }).map((_, i) => (
                   <Star
                     key={i}
@@ -334,6 +341,8 @@ function LandingPage() {
           </Accordion>
         </Reveal>
       </section>
+
+      </main>
 
       <SiteFooter />
       <StickyBar />
@@ -369,7 +378,7 @@ function QuoteForm() {
   };
 
   const fieldClass =
-    "w-full rounded-xl bg-background px-4 py-3 text-base text-foreground shadow-inner outline-none ring-1 ring-border transition focus:ring-4 focus:ring-ring";
+    "w-full rounded-xl bg-background px-4 py-3 text-base text-foreground shadow-inner ring-1 ring-border transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground focus:ring-4 focus:ring-ring";
 
   return (
     <section id="quote" className="mx-auto max-w-3xl px-5 py-10">
@@ -377,14 +386,19 @@ function QuoteForm() {
         בקשת הצעת מחיר
       </SectionTitle>
       <Reveal className="rounded-2xl bg-card p-5 shadow-[0_2px_14px_rgba(0,0,0,0.06)]">
-        <form onSubmit={handleSubmit} className="grid gap-4 sm:grid-cols-2">
+        <form onSubmit={handleSubmit} noValidate={false} className="grid gap-4 sm:grid-cols-2">
+          <p className="text-sm text-muted-foreground sm:col-span-2">
+            כל השדות המסומנים בכוכבית (*) הם שדות חובה.
+          </p>
           <div>
             <label htmlFor="name" className="mb-1.5 block text-sm font-bold">
-              שם מלא
+              שם מלא <span aria-hidden="true">*</span>
             </label>
             <input
               id="name"
               required
+              aria-required="true"
+              autoComplete="name"
               value={form.name}
               onChange={update("name")}
               className={fieldClass}
@@ -393,11 +407,14 @@ function QuoteForm() {
           </div>
           <div>
             <label htmlFor="phone" className="mb-1.5 block text-sm font-bold">
-              טלפון
+              טלפון <span aria-hidden="true">*</span>
             </label>
             <input
               id="phone"
               required
+              aria-required="true"
+              aria-describedby="phone-hint"
+              autoComplete="tel"
               type="tel"
               inputMode="tel"
               value={form.phone}
@@ -405,14 +422,18 @@ function QuoteForm() {
               className={fieldClass}
               placeholder="050-0000000"
             />
+            <p id="phone-hint" className="mt-1.5 text-xs text-muted-foreground">
+              לדוגמה: 050-0000000
+            </p>
           </div>
           <div>
             <label htmlFor="origin" className="mb-1.5 block text-sm font-bold">
-              נקודת מוצא
+              נקודת מוצא <span aria-hidden="true">*</span>
             </label>
             <input
               id="origin"
               required
+              aria-required="true"
               value={form.origin}
               onChange={update("origin")}
               className={fieldClass}
@@ -421,11 +442,12 @@ function QuoteForm() {
           </div>
           <div>
             <label htmlFor="destination" className="mb-1.5 block text-sm font-bold">
-              יעד
+              יעד <span aria-hidden="true">*</span>
             </label>
             <input
               id="destination"
               required
+              aria-required="true"
               value={form.destination}
               onChange={update("destination")}
               className={fieldClass}
@@ -434,11 +456,12 @@ function QuoteForm() {
           </div>
           <div>
             <label htmlFor="date" className="mb-1.5 block text-sm font-bold">
-              תאריך הנסיעה
+              תאריך הנסיעה <span aria-hidden="true">*</span>
             </label>
             <input
               id="date"
               required
+              aria-required="true"
               type="date"
               value={form.date}
               onChange={update("date")}
@@ -447,11 +470,13 @@ function QuoteForm() {
           </div>
           <div>
             <label htmlFor="passengers" className="mb-1.5 block text-sm font-bold">
-              מספר נוסעים
+              מספר נוסעים <span aria-hidden="true">*</span>
             </label>
             <input
               id="passengers"
               required
+              aria-required="true"
+              aria-describedby="passengers-hint"
               type="number"
               min={1}
               max={8}
@@ -460,6 +485,9 @@ function QuoteForm() {
               className={fieldClass}
               placeholder="8"
             />
+            <p id="passengers-hint" className="mt-1.5 text-xs text-muted-foreground">
+              עד 8 נוסעים בנסיעה אחת
+            </p>
           </div>
           <button
             type="submit"
@@ -490,7 +518,7 @@ function SiteFooter() {
               <Phone className="size-4 text-brand" aria-hidden="true" />
               <a
                 href={telLink}
-                className="font-bold hover:underline"
+                className="font-bold underline"
                 aria-label={`להתקשר לטלפון ${CONFIG.phoneDisplay}`}
               >
                 {CONFIG.phoneDisplay}
@@ -502,7 +530,7 @@ function SiteFooter() {
                 href={waLink("שלום, אני מעוניין בהזמנת מונית גדולה.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold hover:underline"
+                className="font-bold underline"
                 aria-label="לפתיחת שיחת וואטסאפ"
               >
                 וואטסאפ
@@ -536,9 +564,17 @@ function SiteFooter() {
           </div>
         </div>
       </div>
-      <p className="border-t border-border px-5 py-4 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} {CONFIG.businessName} · כל הזכויות שמורות
-      </p>
+      <div className="border-t border-border px-5 py-4 text-center text-xs text-muted-foreground">
+        <Link
+          to="/accessibility"
+          className="font-bold underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+        >
+          הצהרת נגישות (תקן ישראלי 5568 / WCAG 2.1 AA)
+        </Link>
+        <p className="mt-2">
+          © {new Date().getFullYear()} {CONFIG.businessName} · כל הזכויות שמורות
+        </p>
+      </div>
     </footer>
   );
 }

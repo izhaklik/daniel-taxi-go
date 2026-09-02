@@ -152,6 +152,11 @@
     scroll-padding-top: 1rem;
   }
 
+  :focus-visible {
+    outline: 3px solid var(--foreground);
+    outline-offset: 2px;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);

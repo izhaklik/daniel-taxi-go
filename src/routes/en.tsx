@@ -45,7 +45,7 @@ export const EN = {
 
   trust: [
     { icon: "badge", title: "Professional licensed driver" },
-    { icon: "price", title: "Price agreed upfront" },
+    { icon: "price", title: "Fast quote on WhatsApp" },
     { icon: "clock", title: "Available 24/7" },
     { icon: "car", title: "Spacious, air-conditioned van" },
     { icon: "languages", title: "Driver speaks Hebrew & English" },
@@ -58,7 +58,7 @@ export const EN = {
       description:
         "Door-to-door pickup with luggage, flight tracking and on-time terminal arrival.",
       message:
-        "Hello, I'd like to book a large taxi to Ben Gurion Airport. Could you send details and a price?",
+        "Hello, I'd like to book a large taxi to Ben Gurion Airport. Could you send me the details?",
     },
     {
       icon: "palm",
@@ -90,7 +90,7 @@ export const EN = {
     {
       icon: "route",
       title: "Intercity rides",
-      description: "Anywhere in Israel to anywhere else, price agreed upfront, no surprises.",
+      description: "Anywhere in Israel to anywhere else, door to door, in full comfort.",
       message: "Hello, I'd like an intercity ride with a large taxi. Could you send details?",
     },
   ],
@@ -113,7 +113,7 @@ export const EN = {
     {
       name: "Ron K.",
       stars: 5,
-      text: "Drove to Eilat with the whole family. Price agreed upfront, no surprises, calm driving all the way.",
+      text: "Drove to Eilat with the whole family. Great vibe and a great driver.",
     },
     {
       name: "Michal D.",
@@ -195,7 +195,7 @@ export const Route = createFileRoute("/en")({
       {
         name: "description",
         content:
-          "Large taxi (Hyundai Staria) for up to 8 passengers anywhere in Israel. Ben Gurion Airport transfers, Eilat, events, weddings, tours and employee shuttles. Price agreed upfront, 24/7.",
+          "Large taxi (Hyundai Staria) for up to 8 passengers anywhere in Israel. Ben Gurion Airport transfers, Eilat, events, weddings, tours and employee shuttles. Available 24/7.",
       },
       { property: "og:title", content: "Daniel Taxi — Large Taxi for up to 8 Passengers" },
       {
@@ -229,7 +229,7 @@ const serviceIcons = {
 } as const;
 
 const btnBase =
-  "inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-base font-bold transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring";
+  "inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-base font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground focus-visible:ring-4 focus-visible:ring-ring";
 const btnSolid = `${btnBase} bg-brand text-brand-foreground hover:bg-brand-hover`;
 const btnOutline = `${btnBase} border-2 border-brand bg-transparent text-foreground hover:bg-brand/10`;
 
@@ -245,20 +245,26 @@ function SectionTitle({ children, sub }: { children: string; sub?: string }) {
 
 function LandingPageEn() {
   return (
-    <div dir="ltr" className="min-h-screen bg-background pb-24 md:pb-0">
+    <div dir="ltr" lang="en" className="min-h-screen bg-background pb-24 md:pb-0">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-xl focus:bg-brand focus:px-4 focus:py-3 focus:text-base focus:font-bold focus:text-brand-foreground"
+      >
+        Skip to main content
+      </a>
       {/* Language bar */}
-      <div className="bg-card">
+      <nav aria-label="Language selection" className="bg-card">
         <div className="mx-auto flex max-w-5xl justify-end px-5 py-2">
           <Link
             to="/"
-            className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-bold text-foreground transition-colors hover:bg-brand/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring"
+            className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-bold text-foreground transition-colors hover:bg-brand/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground focus-visible:ring-4 focus-visible:ring-ring"
             aria-label="Switch to the Hebrew version of the site"
           >
             <Globe className="size-4 text-brand" aria-hidden="true" />
-            עברית
+            <span lang="he" dir="rtl">עברית</span>
           </Link>
         </div>
-      </div>
+      </nav>
 
       {/* Hero */}
       <header className="relative isolate overflow-hidden">
@@ -285,11 +291,11 @@ function LandingPageEn() {
           </h1>
           <p
             className="mt-4 max-w-xl text-base leading-relaxed sm:text-lg"
-            style={{ color: "rgba(255,255,255,0.88)" }}
+            style={{ color: "#f5f5f5" }}
           >
             Large taxi service — {EN.vehicle} — anywhere in Israel. Airport transfers, Eilat,
             events, weddings, tours and employee shuttles. The driver speaks Hebrew and English —
-            perfect for tourists. Price agreed upfront.
+            perfect for tourists.
           </p>
           <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <a
@@ -301,7 +307,7 @@ function LandingPageEn() {
               Call now {CONFIG.phoneDisplay}
             </a>
             <a
-              href={waLink("Hello, I'd like to book a large taxi. Could you send details and a price?")}
+              href={waLink("Hello, I'd like to book a large taxi. Could you send me the details?")}
               target="_blank"
               rel="noopener noreferrer"
               className={btnOutline}
@@ -315,8 +321,9 @@ function LandingPageEn() {
         </div>
       </header>
 
+      <main id="main">
       {/* Trust strip */}
-      <Reveal as="section" className="mx-auto max-w-5xl px-5 py-10">
+      <Reveal as="section" aria-label="Why choose us" className="mx-auto max-w-5xl px-5 py-10">
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-5">
           {EN.trust.map((item) => {
             const Icon = trustIcons[item.icon as keyof typeof trustIcons];
@@ -335,7 +342,7 @@ function LandingPageEn() {
 
       {/* Services */}
       <section id="services" className="mx-auto max-w-5xl px-5 py-10">
-        <SectionTitle sub="Pick a service and send a message — we'll reply with a fixed price">
+        <SectionTitle sub="Pick a service and send a message — we'll get back to you right away">
           Our services
         </SectionTitle>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -370,7 +377,7 @@ function LandingPageEn() {
 
       {/* Popular routes */}
       <section id="routes" className="mx-auto max-w-5xl px-5 py-10">
-        <SectionTitle sub="Send a message and we'll reply with a price agreed upfront">
+        <SectionTitle sub="Send a message and we'll get back to you with all the details">
           Popular routes
         </SectionTitle>
         <ul className="grid gap-3 sm:grid-cols-2">
@@ -387,7 +394,7 @@ function LandingPageEn() {
               </div>
               <a
                 href={waLink(
-                  `Hello, I'd like a large taxi from ${route.from} to ${route.to}. Could you confirm the price?`,
+                  `Hello, I'd like a large taxi from ${route.from} to ${route.to}. Could you confirm availability?`,
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -414,7 +421,7 @@ function LandingPageEn() {
               as="article"
               className="rounded-2xl bg-card p-5 shadow-[0_2px_14px_rgba(0,0,0,0.06)]"
             >
-              <div className="flex gap-0.5" aria-label={`Rated ${item.stars} out of 5`}>
+              <div className="flex gap-0.5" role="img" aria-label={`Rated ${item.stars} out of 5`}>
                 {Array.from({ length: item.stars }).map((_, i) => (
                   <Star
                     key={i}
@@ -448,6 +455,8 @@ function LandingPageEn() {
           </Accordion>
         </Reveal>
       </section>
+
+      </main>
 
       <SiteFooterEn />
       <StickyBarEn />
@@ -483,7 +492,7 @@ function QuoteFormEn() {
   };
 
   const fieldClass =
-    "w-full rounded-xl bg-background px-4 py-3 text-base text-foreground shadow-inner outline-none ring-1 ring-border transition focus:ring-4 focus:ring-ring";
+    "w-full rounded-xl bg-background px-4 py-3 text-base text-foreground shadow-inner ring-1 ring-border transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground focus:ring-4 focus:ring-ring";
 
   return (
     <section id="quote" className="mx-auto max-w-3xl px-5 py-10">
@@ -492,13 +501,18 @@ function QuoteFormEn() {
       </SectionTitle>
       <Reveal className="rounded-2xl bg-card p-5 shadow-[0_2px_14px_rgba(0,0,0,0.06)]">
         <form onSubmit={handleSubmit} className="grid gap-4 sm:grid-cols-2">
+          <p className="text-sm text-muted-foreground sm:col-span-2">
+            Fields marked with an asterisk (*) are required.
+          </p>
           <div>
             <label htmlFor="en-name" className="mb-1.5 block text-sm font-bold">
-              Full name
+              Full name <span aria-hidden="true">*</span>
             </label>
             <input
               id="en-name"
               required
+              aria-required="true"
+              autoComplete="name"
               value={form.name}
               onChange={update("name")}
               className={fieldClass}
@@ -507,11 +521,14 @@ function QuoteFormEn() {
           </div>
           <div>
             <label htmlFor="en-phone" className="mb-1.5 block text-sm font-bold">
-              Phone
+              Phone <span aria-hidden="true">*</span>
             </label>
             <input
               id="en-phone"
               required
+              aria-required="true"
+              aria-describedby="en-phone-hint"
+              autoComplete="tel"
               type="tel"
               inputMode="tel"
               value={form.phone}
@@ -519,14 +536,18 @@ function QuoteFormEn() {
               className={fieldClass}
               placeholder="050-0000000"
             />
+            <p id="en-phone-hint" className="mt-1.5 text-xs text-muted-foreground">
+              For example: 050-0000000
+            </p>
           </div>
           <div>
             <label htmlFor="en-origin" className="mb-1.5 block text-sm font-bold">
-              Pickup location
+              Pickup location <span aria-hidden="true">*</span>
             </label>
             <input
               id="en-origin"
               required
+              aria-required="true"
               value={form.origin}
               onChange={update("origin")}
               className={fieldClass}
@@ -535,11 +556,12 @@ function QuoteFormEn() {
           </div>
           <div>
             <label htmlFor="en-destination" className="mb-1.5 block text-sm font-bold">
-              Destination
+              Destination <span aria-hidden="true">*</span>
             </label>
             <input
               id="en-destination"
               required
+              aria-required="true"
               value={form.destination}
               onChange={update("destination")}
               className={fieldClass}
@@ -548,11 +570,12 @@ function QuoteFormEn() {
           </div>
           <div>
             <label htmlFor="en-date" className="mb-1.5 block text-sm font-bold">
-              Ride date
+              Ride date <span aria-hidden="true">*</span>
             </label>
             <input
               id="en-date"
               required
+              aria-required="true"
               type="date"
               value={form.date}
               onChange={update("date")}
@@ -561,11 +584,13 @@ function QuoteFormEn() {
           </div>
           <div>
             <label htmlFor="en-passengers" className="mb-1.5 block text-sm font-bold">
-              Number of passengers
+              Number of passengers <span aria-hidden="true">*</span>
             </label>
             <input
               id="en-passengers"
               required
+              aria-required="true"
+              aria-describedby="en-passengers-hint"
               type="number"
               min={1}
               max={8}
@@ -574,6 +599,9 @@ function QuoteFormEn() {
               className={fieldClass}
               placeholder="8"
             />
+            <p id="en-passengers-hint" className="mt-1.5 text-xs text-muted-foreground">
+              Up to 8 passengers per ride
+            </p>
           </div>
           <button
             type="submit"
@@ -604,7 +632,7 @@ function SiteFooterEn() {
               <Phone className="size-4 text-brand" aria-hidden="true" />
               <a
                 href={telLink}
-                className="font-bold hover:underline"
+                className="font-bold underline"
                 aria-label={`Call ${CONFIG.phoneDisplay}`}
               >
                 {CONFIG.phoneDisplay}
@@ -616,7 +644,7 @@ function SiteFooterEn() {
                 href={waLink("Hello, I'd like to book a large taxi.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold hover:underline"
+                className="font-bold underline"
                 aria-label="Open a WhatsApp chat"
               >
                 WhatsApp
@@ -650,9 +678,17 @@ function SiteFooterEn() {
           </div>
         </div>
       </div>
-      <p className="border-t border-border px-5 py-4 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} {EN.businessName} · All rights reserved
-      </p>
+      <div className="border-t border-border px-5 py-4 text-center text-xs text-muted-foreground">
+        <Link
+          to="/accessibility"
+          className="font-bold underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+        >
+          <span lang="he" dir="rtl">הצהרת נגישות</span> — Accessibility statement (IS 5568 / WCAG 2.1 AA)
+        </Link>
+        <p className="mt-2">
+          © {new Date().getFullYear()} {EN.businessName} · All rights reserved
+        </p>
+      </div>
     </footer>
   );
 }
