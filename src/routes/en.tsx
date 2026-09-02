@@ -309,7 +309,7 @@ function LandingPageEn() {
 
       {/* Trust strip */}
       <Reveal as="section" className="mx-auto max-w-5xl px-5 py-10">
-        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-5">
           {EN.trust.map((item) => {
             const Icon = trustIcons[item.icon as keyof typeof trustIcons];
             return (
