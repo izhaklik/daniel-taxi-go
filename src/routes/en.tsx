@@ -45,7 +45,7 @@ export const EN = {
 
   trust: [
     { icon: "badge", title: "Professional licensed driver" },
-    { icon: "price", title: "Fast quote on WhatsApp" },
+    
     { icon: "clock", title: "Available 24/7" },
     { icon: "car", title: "Spacious, air-conditioned van" },
     { icon: "languages", title: "Driver speaks Hebrew & English" },
