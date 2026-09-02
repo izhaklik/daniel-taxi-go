@@ -5,3 +5,5 @@
 - [x] All 8 sections + sticky mobile bar
 - [x] SEO head + LocalBusiness/TaxiService JSON-LD
 - [x] Hero photo shows a Hyundai Staria
+- [x] Remove prices from popular routes
+- [x] Update service area to all of Israel (not only Bat-yam)

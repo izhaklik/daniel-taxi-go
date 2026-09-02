@@ -11,7 +11,8 @@ export const CONFIG = {
   whatsapp: "972546633776",
   vehicle: "יונדאי סטריה (Hyundai Staria)",
   hours: "24/7, כל ימות השבוע",
-  areas: ["בת ים", "ראשון לציון", "חולון", "אילת"],
+  areas: ["כל הארץ"],
+  areaServed: "ישראל",
   address: "בת ים, ישראל",
   mapsEmbedUrl:
     "https://www.google.com/maps?q=%D7%91%D7%AA%20%D7%99%D7%9D&output=embed",
@@ -62,14 +63,13 @@ export const CONFIG = {
     },
   ],
 
-  /** מחירים להמחשה — עדכנו כאן */
   routes: [
-    { from: "תל אביב", to: 'נתב"ג', price: "₪250" },
-    { from: "בת ים", to: 'נתב"ג', price: "₪280" },
-    { from: "ראשון לציון", to: "ירושלים", price: "₪450" },
-    { from: "חיפה", to: "אילת", price: "₪1,800" },
-    { from: "ירושלים", to: "ים המלח", price: "₪700" },
-    { from: "חולון", to: "אילת", price: "₪1,600" },
+    { from: "תל אביב", to: 'נתב"ג' },
+    { from: "בת ים", to: 'נתב"ג' },
+    { from: "ראשון לציון", to: "ירושלים" },
+    { from: "חיפה", to: "אילת" },
+    { from: "ירושלים", to: "ים המלח" },
+    { from: "חולון", to: "אילת" },
   ],
 
   testimonials: [

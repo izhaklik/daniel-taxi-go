@@ -49,7 +49,7 @@ const jsonLd = {
         addressLocality: "בת ים",
         addressCountry: "IL",
       },
-      areaServed: CONFIG.areas.map((area) => ({ "@type": "City", name: area })),
+      areaServed: { "@type": "Country", name: CONFIG.areaServed },
       openingHoursSpecification: {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: [
@@ -127,8 +127,6 @@ function SectionTitle({ children, sub }: { children: string; sub?: string }) {
 }
 
 function LandingPage() {
-  const areasText = CONFIG.areas.join(" · ");
-
   return (
     <div className="min-h-screen bg-background pb-24 md:pb-0">
       {/* Hero */}
@@ -158,7 +156,7 @@ function LandingPage() {
             className="mt-4 max-w-xl text-base leading-relaxed sm:text-lg"
             style={{ color: "rgba(255,255,255,0.88)" }}
           >
-            שירות מונית גדולה — {CONFIG.vehicle} — באזור {areasText} ובכל הארץ. נסיעות
+            שירות מונית גדולה — {CONFIG.vehicle} — בכל הארץ. נסיעות
             לנתב"ג, אילת, אירועים, חתונות, טיולים והסעות עובדים. מחיר קבוע מראש.
           </p>
           <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
@@ -240,7 +238,7 @@ function LandingPage() {
 
       {/* Popular routes */}
       <section id="routes" className="mx-auto max-w-5xl px-5 py-10">
-        <SectionTitle sub="מחירים להמחשה בלבד — המחיר הסופי נסגר מראש בשיחה">
+        <SectionTitle sub="שלחו הודעה ונחזור אליכם עם מחיר סגור מראש">
           מסלולים פופולריים
         </SectionTitle>
         <ul className="grid gap-3 sm:grid-cols-2">
@@ -250,15 +248,10 @@ function LandingPage() {
               as="li"
               className="flex items-center justify-between gap-3 rounded-2xl bg-card p-4 shadow-[0_2px_14px_rgba(0,0,0,0.06)]"
             >
-              <div className="min-w-0">
-                <div className="flex items-center gap-2 text-sm font-bold">
-                  <span className="truncate">{route.from}</span>
-                  <ArrowLeft className="size-4 shrink-0 text-brand" aria-hidden="true" />
-                  <span className="truncate">{route.to}</span>
-                </div>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  החל מ־<span className="font-bold text-foreground">{route.price}</span>
-                </p>
+              <div className="flex items-center gap-2 text-sm font-bold">
+                <span className="truncate">{route.from}</span>
+                <ArrowLeft className="size-4 shrink-0 text-brand" aria-hidden="true" />
+                <span className="truncate">{route.to}</span>
               </div>
               <a
                 href={waLink(
