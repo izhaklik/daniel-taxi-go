@@ -158,7 +158,7 @@ function LandingPage() {
             className="mt-4 max-w-xl text-base leading-relaxed sm:text-lg"
             style={{ color: "rgba(255,255,255,0.88)" }}
           >
-            שירות מונית גדולה ({CONFIG.vehicle}) באזור {areasText} ובכל הארץ — נסיעות
+            שירות מונית גדולה — {CONFIG.vehicle} — באזור {areasText} ובכל הארץ. נסיעות
             לנתב"ג, אילת, אירועים, חתונות, טיולים והסעות עובדים. מחיר קבוע מראש.
           </p>
           <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
