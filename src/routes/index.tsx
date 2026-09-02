@@ -99,7 +99,7 @@ export const Route = createFileRoute("/")({
 
 const trustIcons = {
   badge: BadgeCheck,
-  price: Coins,
+  
   clock: Clock,
   car: Snowflake,
   languages: Languages,
