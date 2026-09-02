@@ -18,6 +18,7 @@ import {
   Users,
   MapPin,
   Globe,
+  Languages,
 } from "lucide-react";
 
 import heroImage from "@/assets/hero-van-taxi.jpg";
@@ -47,6 +48,7 @@ export const EN = {
     { icon: "price", title: "Price agreed upfront" },
     { icon: "clock", title: "Available 24/7" },
     { icon: "car", title: "Spacious, air-conditioned van" },
+    { icon: "languages", title: "Driver speaks Hebrew & English" },
   ],
 
   services: [
@@ -141,6 +143,10 @@ export const EN = {
       q: "Do you drive on Shabbat?",
       a: "Yes, we're available 24/7 including Shabbat and holidays. Booking ahead is recommended to guarantee availability.",
     },
+    {
+      q: "What languages does the driver speak?",
+      a: "The driver speaks both Hebrew and English, so tourists and visitors from abroad get full, comfortable service.",
+    },
   ],
 } as const;
 
@@ -210,6 +216,7 @@ const trustIcons = {
   price: Coins,
   clock: Clock,
   car: Snowflake,
+  languages: Languages,
 } as const;
 
 const serviceIcons = {
@@ -281,7 +288,8 @@ function LandingPageEn() {
             style={{ color: "rgba(255,255,255,0.88)" }}
           >
             Large taxi service — {EN.vehicle} — anywhere in Israel. Airport transfers, Eilat,
-            events, weddings, tours and employee shuttles. Price agreed upfront.
+            events, weddings, tours and employee shuttles. The driver speaks Hebrew and English —
+            perfect for tourists. Price agreed upfront.
           </p>
           <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <a
