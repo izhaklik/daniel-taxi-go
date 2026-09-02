@@ -14,8 +14,7 @@ export const CONFIG = {
   areas: ["כל הארץ"],
   areaServed: "ישראל",
   address: "בת ים, ישראל",
-  mapsEmbedUrl:
-    "https://www.google.com/maps?q=%D7%91%D7%AA%20%D7%99%D7%9D&output=embed",
+  mapsEmbedUrl: "https://www.google.com/maps?q=Israel&output=embed",
 
   trust: [
     { icon: "badge", title: "נהג מקצועי ומורשה" },
