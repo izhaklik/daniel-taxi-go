@@ -4,7 +4,7 @@
  * ============================================================
  */
 export const CONFIG = {
-  businessName: "דניאל taxi",
+  businessName: "דניאל TAXI",
   tagline: "מונית גדולה עד 8 נוסעים",
   phoneDisplay: "054-6633776",
   phoneTel: "+972546633776",
