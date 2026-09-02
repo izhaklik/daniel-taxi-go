@@ -507,9 +507,9 @@ function SiteFooter() {
     <footer className="mt-4 border-t border-border bg-card">
       <div className="mx-auto grid max-w-5xl gap-8 px-5 py-10 sm:grid-cols-2">
         <div>
-          <h2 className="text-xl font-black">{CONFIG.businessName}</h2>
+          <h2 className="text-xl font-black">דניאל TAXI</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            {CONFIG.tagline} · {CONFIG.vehicle}
+            {CONFIG.tagline} ·
           </p>
 
           <ul className="mt-5 space-y-3 text-sm">
