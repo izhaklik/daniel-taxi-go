@@ -17,6 +17,8 @@ import {
   ArrowLeft,
   Users,
   MapPin,
+  Languages,
+  Globe,
 } from "lucide-react";
 
 import heroImage from "@/assets/hero-van-taxi.jpg";
