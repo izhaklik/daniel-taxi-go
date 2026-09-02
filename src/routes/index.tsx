@@ -78,13 +78,13 @@ const jsonLd = {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: 'דניאל taxi — מונית גדולה עד 8 נוסעים | זמינות 24/7' },
+      { title: 'דניאל taxi — מונית גדולה עד 6 נוסעים | זמינות 24/7' },
       {
         name: "description",
         content:
-          'מונית גדולה עד 8 נוסעים בכל הארץ. נסיעות לנתב"ג, אילת, אירועים, חתונות, טיולים והסעות עובדים. נהג דובר עברית ואנגלית, 24/7.',
+          'מונית גדולה עד 6 נוסעים בכל הארץ. נסיעות לנתב"ג, אילת, אירועים, חתונות, טיולים והסעות עובדים. נהג דובר עברית ואנגלית, 24/7.',
       },
-      { property: "og:title", content: "דניאל taxi — מונית גדולה עד 8 נוסעים" },
+      { property: "og:title", content: "דניאל taxi — מונית גדולה עד 6 נוסעים" },
       {
         property: "og:description",
         content: 'הזמנת מונית גדולה 24/7 — נתב"ג, אילת, אירועים, טיולים והסעות עובדים.',
@@ -156,7 +156,7 @@ function LandingPage() {
       <header className="relative isolate overflow-hidden">
         <img
           src={heroImage}
-          alt={`${CONFIG.businessName} — ${CONFIG.vehicle}, מונית גדולה עד 8 נוסעים`}
+          alt={`${CONFIG.businessName} — ${CONFIG.vehicle}, מונית גדולה עד 6 נוסעים`}
           width={1600}
           height={1104}
           className="absolute inset-0 -z-10 h-full w-full object-cover"
@@ -173,7 +173,7 @@ function LandingPage() {
             className="mt-5 text-3xl font-black leading-tight sm:text-5xl"
             style={{ color: "#ffffff" }}
           >
-            מונית גדולה עד 8 נוסעים — זמינות 24/7
+            מונית גדולה עד 6 נוסעים — זמינות 24/7
           </h1>
           <p
             className="mt-4 max-w-xl text-base leading-relaxed sm:text-lg"
@@ -478,14 +478,14 @@ function QuoteForm() {
               aria-describedby="passengers-hint"
               type="number"
               min={1}
-              max={8}
+              max={6}
               value={form.passengers}
               onChange={update("passengers")}
               className={fieldClass}
               placeholder="8"
             />
             <p id="passengers-hint" className="mt-1.5 text-xs text-muted-foreground">
-              עד 8 נוסעים בנסיעה אחת
+              עד 6 נוסעים בנסיעה אחת
             </p>
           </div>
           <button
@@ -545,7 +545,7 @@ function SiteFooter() {
             </li>
             <li className="flex items-center gap-2 text-muted-foreground">
               <Users className="size-4 text-brand" aria-hidden="true" />
-              עד 8 נוסעים בנסיעה אחת
+              עד 6 נוסעים בנסיעה אחת
             </li>
           </ul>
         </div>
