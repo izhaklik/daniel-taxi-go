@@ -14,11 +14,11 @@ import {
   Map as MapIcon,
   Route as RouteIcon,
   Star,
-  ArrowLeft,
+  ArrowRight,
   Users,
   MapPin,
-  Languages,
   Globe,
+  Languages,
 } from "lucide-react";
 
 import heroImage from "@/assets/hero-van-taxi.jpg";
@@ -32,26 +32,139 @@ import {
 } from "@/components/ui/accordion";
 
 /**
- * לעריכת טלפון, וואטסאפ, מסלולים, מחירים, שירותים ושאלות נפוצות —
- * ערכו את הקובץ src/lib/site-config.ts (אובייקט CONFIG). אין צורך לגעת בקוד העיצוב.
+ * English version of the landing page.
+ * Business data (phone / WhatsApp / routes) still comes from src/lib/site-config.ts.
+ * English copy lives in the EN object below — edit here only.
  */
-export { CONFIG };
+export const EN = {
+  businessName: "Daniel Taxi",
+  tagline: "Large taxi for up to 8 passengers",
+  vehicle: "Hyundai Staria",
+  hours: "24/7, all week long",
+  areas: ["All of Israel"],
+
+  trust: [
+    { icon: "badge", title: "Professional licensed driver" },
+    { icon: "price", title: "Price agreed upfront" },
+    { icon: "clock", title: "Available 24/7" },
+    { icon: "car", title: "Spacious, air-conditioned van" },
+    { icon: "languages", title: "Driver speaks Hebrew & English" },
+  ],
+
+  services: [
+    {
+      icon: "plane",
+      title: "Ben Gurion Airport transfers",
+      description:
+        "Door-to-door pickup with luggage, flight tracking and on-time terminal arrival.",
+      message:
+        "Hello, I'd like to book a large taxi to Ben Gurion Airport. Could you send details and a price?",
+    },
+    {
+      icon: "palm",
+      title: "Trips to Eilat",
+      description: "Direct, comfortable rides to Eilat with stops along the way if needed.",
+      message: "Hello, I'd like a quote for a large taxi to Eilat.",
+    },
+    {
+      icon: "heart",
+      title: "Events & weddings",
+      description:
+        "Guest transport to the venue and back, timed precisely around your event schedule.",
+      message: "Hello, I'd like a large taxi for an event/wedding. Could you send a quote?",
+    },
+    {
+      icon: "briefcase",
+      title: "Employee shuttles",
+      description:
+        "Recurring shuttles for companies, mornings and end of day, with proper invoicing.",
+      message: "Hello, I'm interested in regular employee shuttles with a large taxi.",
+    },
+    {
+      icon: "map",
+      title: "Tours & attractions",
+      description:
+        "A full day out for the family or group — the driver waits and drives between sites.",
+      message: "Hello, I'd like a large taxi for a tour/attraction day. Could you send a quote?",
+    },
+    {
+      icon: "route",
+      title: "Intercity rides",
+      description: "Anywhere in Israel to anywhere else, price agreed upfront, no surprises.",
+      message: "Hello, I'd like an intercity ride with a large taxi. Could you send details?",
+    },
+  ],
+
+  routes: [
+    { from: "Tel Aviv", to: "Ben Gurion Airport" },
+    { from: "Bat Yam", to: "Ben Gurion Airport" },
+    { from: "Rishon LeZion", to: "Jerusalem" },
+    { from: "Haifa", to: "Eilat" },
+    { from: "Jerusalem", to: "Dead Sea" },
+    { from: "Holon", to: "Eilat" },
+  ],
+
+  testimonials: [
+    {
+      name: "Orit M.",
+      stars: 5,
+      text: "We took 9 people to the airport at 4am — Daniel arrived early, the van was clean and cool. Perfect.",
+    },
+    {
+      name: "Ron K.",
+      stars: 5,
+      text: "Drove to Eilat with the whole family. Price agreed upfront, no surprises, calm driving all the way.",
+    },
+    {
+      name: "Michal D.",
+      stars: 5,
+      text: "Guest transport for our wedding. Precise coordination, endless patience and lots of smiles.",
+    },
+  ],
+
+  faq: [
+    {
+      q: "How many passengers fit?",
+      a: "The large taxi is licensed for up to 8 passengers plus the driver, with a comfortable seat and seatbelt for everyone.",
+    },
+    {
+      q: "Is there room for luggage?",
+      a: "Yes. There is a large luggage compartment that fits suitcases for all passengers. If you have an unusual amount, tell us in advance and we'll arrange it.",
+    },
+    {
+      q: "How do I pay?",
+      a: "Cash, Bit or bank transfer. Companies and organizations can receive a proper invoice.",
+    },
+    {
+      q: "Can I book in advance?",
+      a: "Absolutely, and it's recommended. You can book exact dates and times, including night and early-morning rides.",
+    },
+    {
+      q: "Do you drive on Shabbat?",
+      a: "Yes, we're available 24/7 including Shabbat and holidays. Booking ahead is recommended to guarantee availability.",
+    },
+    {
+      q: "What languages does the driver speak?",
+      a: "The driver speaks both Hebrew and English, so tourists and visitors from abroad get full, comfortable service.",
+    },
+  ],
+} as const;
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": ["LocalBusiness", "TaxiService"],
-      name: CONFIG.businessName,
-      description: `${CONFIG.tagline} — הסעות, נתב"ג, אילת, אירועים וטיולים. זמינות 24/7.`,
+      name: EN.businessName,
+      description: `${EN.tagline} — airport transfers, Eilat, events, tours and employee shuttles. Available 24/7.`,
       telephone: CONFIG.phoneTel,
       priceRange: "₪₪",
       address: {
         "@type": "PostalAddress",
-        addressLocality: "בת ים",
+        addressLocality: "Bat Yam",
         addressCountry: "IL",
       },
-      areaServed: { "@type": "Country", name: CONFIG.areaServed },
+      areaServed: { "@type": "Country", name: "Israel" },
       openingHoursSpecification: {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: [
@@ -69,32 +182,33 @@ const jsonLd = {
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: "5",
-        reviewCount: String(CONFIG.testimonials.length),
+        reviewCount: String(EN.testimonials.length),
       },
     },
   ],
 };
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/en")({
   head: () => ({
     meta: [
-      { title: 'דניאל taxi — מונית גדולה עד 8 נוסעים | זמינות 24/7' },
+      { title: "Daniel Taxi — Large Taxi for up to 8 Passengers | 24/7 in Israel" },
       {
         name: "description",
         content:
-          'מונית גדולה עד 8 נוסעים בבת ים, ראשון לציון, חולון ואילת. נסיעות לנתב"ג, אילת, אירועים, חתונות, טיולים והסעות עובדים. מחיר קבוע מראש, 24/7.',
+          "Large taxi (Hyundai Staria) for up to 8 passengers anywhere in Israel. Ben Gurion Airport transfers, Eilat, events, weddings, tours and employee shuttles. Price agreed upfront, 24/7.",
       },
-      { property: "og:title", content: "דניאל taxi — מונית גדולה עד 8 נוסעים" },
+      { property: "og:title", content: "Daniel Taxi — Large Taxi for up to 8 Passengers" },
       {
         property: "og:description",
-        content: 'הזמנת מונית גדולה 24/7 — נתב"ג, אילת, אירועים, טיולים והסעות עובדים.',
+        content:
+          "Book a large taxi 24/7 — airport transfers, Eilat, events, tours and employee shuttles.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
   }),
-  component: LandingPage,
+  component: LandingPageEn,
 });
 
 const trustIcons = {
@@ -129,19 +243,19 @@ function SectionTitle({ children, sub }: { children: string; sub?: string }) {
   );
 }
 
-function LandingPage() {
+function LandingPageEn() {
   return (
-    <div className="min-h-screen bg-background pb-24 md:pb-0">
+    <div dir="ltr" className="min-h-screen bg-background pb-24 md:pb-0">
       {/* Language bar */}
       <div className="bg-card">
         <div className="mx-auto flex max-w-5xl justify-end px-5 py-2">
           <Link
-            to="/en"
+            to="/"
             className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-bold text-foreground transition-colors hover:bg-brand/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring"
-            aria-label="למעבר לגרסה האנגלית של האתר"
+            aria-label="Switch to the Hebrew version of the site"
           >
             <Globe className="size-4 text-brand" aria-hidden="true" />
-            English
+            עברית
           </Link>
         </div>
       </div>
@@ -150,7 +264,7 @@ function LandingPage() {
       <header className="relative isolate overflow-hidden">
         <img
           src={heroImage}
-          alt={`${CONFIG.businessName} — ${CONFIG.vehicle}, מונית גדולה עד 8 נוסעים`}
+          alt={`${EN.businessName} — ${EN.vehicle}, large taxi for up to 8 passengers`}
           width={1600}
           height={1104}
           className="absolute inset-0 -z-10 h-full w-full object-cover"
@@ -161,41 +275,41 @@ function LandingPage() {
         />
         <div className="mx-auto flex max-w-5xl flex-col items-start px-5 pb-12 pt-16 sm:pt-24">
           <span className="rounded-full bg-brand px-3 py-1 text-xs font-bold text-brand-foreground">
-            {CONFIG.businessName}
+            {EN.businessName}
           </span>
           <h1
             className="mt-5 text-3xl font-black leading-tight sm:text-5xl"
             style={{ color: "#ffffff" }}
           >
-            מונית גדולה עד 8 נוסעים — זמינות 24/7
+            Large taxi for up to 8 passengers — available 24/7
           </h1>
           <p
             className="mt-4 max-w-xl text-base leading-relaxed sm:text-lg"
             style={{ color: "rgba(255,255,255,0.88)" }}
           >
-            שירות מונית גדולה — {CONFIG.vehicle} — בכל הארץ. נסיעות
-            לנתב"ג, אילת, אירועים, חתונות, טיולים והסעות עובדים. נהג דובר עברית ואנגלית,
-            מחיר קבוע מראש.
+            Large taxi service — {EN.vehicle} — anywhere in Israel. Airport transfers, Eilat,
+            events, weddings, tours and employee shuttles. The driver speaks Hebrew and English —
+            perfect for tourists. Price agreed upfront.
           </p>
           <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <a
               href={telLink}
               className={btnSolid}
-              aria-label={`להתקשר עכשיו ל${CONFIG.businessName} בטלפון ${CONFIG.phoneDisplay}`}
+              aria-label={`Call ${EN.businessName} now at ${CONFIG.phoneDisplay}`}
             >
               <Phone className="size-5" aria-hidden="true" />
-              התקשרו עכשיו {CONFIG.phoneDisplay}
+              Call now {CONFIG.phoneDisplay}
             </a>
             <a
-              href={waLink("שלום, אני מעוניין בהזמנת מונית גדולה. אשמח לפרטים ומחיר.")}
+              href={waLink("Hello, I'd like to book a large taxi. Could you send details and a price?")}
               target="_blank"
               rel="noopener noreferrer"
               className={btnOutline}
               style={{ color: "#ffffff" }}
-              aria-label="לשליחת הודעת וואטסאפ להזמנת מונית גדולה"
+              aria-label="Send a WhatsApp message to book a large taxi"
             >
               <MessageCircle className="size-5" aria-hidden="true" />
-              וואטסאפ
+              WhatsApp
             </a>
           </div>
         </div>
@@ -204,7 +318,7 @@ function LandingPage() {
       {/* Trust strip */}
       <Reveal as="section" className="mx-auto max-w-5xl px-5 py-10">
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-5">
-          {CONFIG.trust.map((item) => {
+          {EN.trust.map((item) => {
             const Icon = trustIcons[item.icon as keyof typeof trustIcons];
             return (
               <li
@@ -221,11 +335,11 @@ function LandingPage() {
 
       {/* Services */}
       <section id="services" className="mx-auto max-w-5xl px-5 py-10">
-        <SectionTitle sub="בחרו שירות ושלחו הודעה — נחזור אליכם עם מחיר סגור">
-          השירותים שלנו
+        <SectionTitle sub="Pick a service and send a message — we'll reply with a fixed price">
+          Our services
         </SectionTitle>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {CONFIG.services.map((service) => {
+          {EN.services.map((service) => {
             const Icon = serviceIcons[service.icon as keyof typeof serviceIcons];
             return (
               <Reveal
@@ -243,10 +357,10 @@ function LandingPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`${btnSolid} mt-4 w-full`}
-                  aria-label={`וואטסאפ בנושא ${service.title}`}
+                  aria-label={`WhatsApp about ${service.title}`}
                 >
                   <MessageCircle className="size-5" aria-hidden="true" />
-                  לפרטים בוואטסאפ
+                  Details on WhatsApp
                 </a>
               </Reveal>
             );
@@ -256,11 +370,11 @@ function LandingPage() {
 
       {/* Popular routes */}
       <section id="routes" className="mx-auto max-w-5xl px-5 py-10">
-        <SectionTitle sub="שלחו הודעה ונחזור אליכם עם מחיר סגור מראש">
-          מסלולים פופולריים
+        <SectionTitle sub="Send a message and we'll reply with a price agreed upfront">
+          Popular routes
         </SectionTitle>
         <ul className="grid gap-3 sm:grid-cols-2">
-          {CONFIG.routes.map((route) => (
+          {EN.routes.map((route) => (
             <Reveal
               key={`${route.from}-${route.to}`}
               as="li"
@@ -268,39 +382,39 @@ function LandingPage() {
             >
               <div className="flex items-center gap-2 text-sm font-bold">
                 <span className="truncate">{route.from}</span>
-                <ArrowLeft className="size-4 shrink-0 text-brand" aria-hidden="true" />
+                <ArrowRight className="size-4 shrink-0 text-brand" aria-hidden="true" />
                 <span className="truncate">{route.to}</span>
               </div>
               <a
                 href={waLink(
-                  `שלום, אני מעוניין בנסיעה מ${route.from} ל${route.to} במונית גדולה. אשמח לאישור מחיר.`,
+                  `Hello, I'd like a large taxi from ${route.from} to ${route.to}. Could you confirm the price?`,
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${btnSolid} shrink-0 px-4 py-2.5 text-sm`}
-                aria-label={`וואטסאפ להזמנת נסיעה מ${route.from} ל${route.to}`}
+                aria-label={`WhatsApp to book a ride from ${route.from} to ${route.to}`}
               >
                 <MessageCircle className="size-4" aria-hidden="true" />
-                הזמנה
+                Book
               </a>
             </Reveal>
           ))}
         </ul>
       </section>
 
-      <QuoteForm />
+      <QuoteFormEn />
 
       {/* Testimonials */}
       <section className="mx-auto max-w-5xl px-5 py-10">
-        <SectionTitle>לקוחות מספרים</SectionTitle>
+        <SectionTitle>What our customers say</SectionTitle>
         <div className="grid gap-4 sm:grid-cols-3">
-          {CONFIG.testimonials.map((item) => (
+          {EN.testimonials.map((item) => (
             <Reveal
               key={item.name}
               as="article"
               className="rounded-2xl bg-card p-5 shadow-[0_2px_14px_rgba(0,0,0,0.06)]"
             >
-              <div className="flex gap-0.5" aria-label={`דירוג ${item.stars} מתוך 5`}>
+              <div className="flex gap-0.5" aria-label={`Rated ${item.stars} out of 5`}>
                 {Array.from({ length: item.stars }).map((_, i) => (
                   <Star
                     key={i}
@@ -318,10 +432,10 @@ function LandingPage() {
 
       {/* FAQ */}
       <section id="faq" className="mx-auto max-w-3xl px-5 py-10">
-        <SectionTitle>שאלות נפוצות</SectionTitle>
+        <SectionTitle>Frequently asked questions</SectionTitle>
         <Reveal className="rounded-2xl bg-card px-4 shadow-[0_2px_14px_rgba(0,0,0,0.06)]">
           <Accordion type="single" collapsible className="w-full">
-            {CONFIG.faq.map((item, i) => (
+            {EN.faq.map((item, i) => (
               <AccordionItem key={item.q} value={`item-${i}`}>
                 <AccordionTrigger className="text-start text-base font-bold">
                   {item.q}
@@ -335,13 +449,13 @@ function LandingPage() {
         </Reveal>
       </section>
 
-      <SiteFooter />
-      <StickyBar />
+      <SiteFooterEn />
+      <StickyBarEn />
     </div>
   );
 }
 
-function QuoteForm() {
+function QuoteFormEn() {
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -357,13 +471,13 @@ function QuoteForm() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const message = [
-      "שלום, אני מעוניין בהצעת מחיר למונית גדולה:",
-      `שם: ${form.name}`,
-      `טלפון: ${form.phone}`,
-      `מוצא: ${form.origin}`,
-      `יעד: ${form.destination}`,
-      `תאריך: ${form.date}`,
-      `מספר נוסעים: ${form.passengers}`,
+      "Hello, I'd like a quote for a large taxi:",
+      `Name: ${form.name}`,
+      `Phone: ${form.phone}`,
+      `Origin: ${form.origin}`,
+      `Destination: ${form.destination}`,
+      `Date: ${form.date}`,
+      `Passengers: ${form.passengers}`,
     ].join("\n");
     window.open(waLink(message), "_blank", "noopener,noreferrer");
   };
@@ -373,30 +487,30 @@ function QuoteForm() {
 
   return (
     <section id="quote" className="mx-auto max-w-3xl px-5 py-10">
-      <SectionTitle sub="ממלאים את הפרטים ונשלח אותם אלינו בוואטסאפ">
-        בקשת הצעת מחיר
+      <SectionTitle sub="Fill in the details and we'll send them to us on WhatsApp">
+        Request a quote
       </SectionTitle>
       <Reveal className="rounded-2xl bg-card p-5 shadow-[0_2px_14px_rgba(0,0,0,0.06)]">
         <form onSubmit={handleSubmit} className="grid gap-4 sm:grid-cols-2">
           <div>
-            <label htmlFor="name" className="mb-1.5 block text-sm font-bold">
-              שם מלא
+            <label htmlFor="en-name" className="mb-1.5 block text-sm font-bold">
+              Full name
             </label>
             <input
-              id="name"
+              id="en-name"
               required
               value={form.name}
               onChange={update("name")}
               className={fieldClass}
-              placeholder="ישראל ישראלי"
+              placeholder="John Smith"
             />
           </div>
           <div>
-            <label htmlFor="phone" className="mb-1.5 block text-sm font-bold">
-              טלפון
+            <label htmlFor="en-phone" className="mb-1.5 block text-sm font-bold">
+              Phone
             </label>
             <input
-              id="phone"
+              id="en-phone"
               required
               type="tel"
               inputMode="tel"
@@ -407,37 +521,37 @@ function QuoteForm() {
             />
           </div>
           <div>
-            <label htmlFor="origin" className="mb-1.5 block text-sm font-bold">
-              נקודת מוצא
+            <label htmlFor="en-origin" className="mb-1.5 block text-sm font-bold">
+              Pickup location
             </label>
             <input
-              id="origin"
+              id="en-origin"
               required
               value={form.origin}
               onChange={update("origin")}
               className={fieldClass}
-              placeholder="בת ים"
+              placeholder="Bat Yam"
             />
           </div>
           <div>
-            <label htmlFor="destination" className="mb-1.5 block text-sm font-bold">
-              יעד
+            <label htmlFor="en-destination" className="mb-1.5 block text-sm font-bold">
+              Destination
             </label>
             <input
-              id="destination"
+              id="en-destination"
               required
               value={form.destination}
               onChange={update("destination")}
               className={fieldClass}
-              placeholder='נתב"ג'
+              placeholder="Ben Gurion Airport"
             />
           </div>
           <div>
-            <label htmlFor="date" className="mb-1.5 block text-sm font-bold">
-              תאריך הנסיעה
+            <label htmlFor="en-date" className="mb-1.5 block text-sm font-bold">
+              Ride date
             </label>
             <input
-              id="date"
+              id="en-date"
               required
               type="date"
               value={form.date}
@@ -446,11 +560,11 @@ function QuoteForm() {
             />
           </div>
           <div>
-            <label htmlFor="passengers" className="mb-1.5 block text-sm font-bold">
-              מספר נוסעים
+            <label htmlFor="en-passengers" className="mb-1.5 block text-sm font-bold">
+              Number of passengers
             </label>
             <input
-              id="passengers"
+              id="en-passengers"
               required
               type="number"
               min={1}
@@ -464,10 +578,10 @@ function QuoteForm() {
           <button
             type="submit"
             className={`${btnSolid} sm:col-span-2`}
-            aria-label="לשליחת פרטי הנסיעה בוואטסאפ"
+            aria-label="Send the ride details on WhatsApp"
           >
             <MessageCircle className="size-5" aria-hidden="true" />
-            שליחה בוואטסאפ
+            Send on WhatsApp
           </button>
         </form>
       </Reveal>
@@ -475,14 +589,14 @@ function QuoteForm() {
   );
 }
 
-function SiteFooter() {
+function SiteFooterEn() {
   return (
     <footer className="mt-4 border-t border-border bg-card">
       <div className="mx-auto grid max-w-5xl gap-8 px-5 py-10 sm:grid-cols-2">
         <div>
-          <h2 className="text-xl font-black">{CONFIG.businessName}</h2>
+          <h2 className="text-xl font-black">{EN.businessName}</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            {CONFIG.tagline} · {CONFIG.vehicle}
+            {EN.tagline} · {EN.vehicle}
           </p>
 
           <ul className="mt-5 space-y-3 text-sm">
@@ -491,7 +605,7 @@ function SiteFooter() {
               <a
                 href={telLink}
                 className="font-bold hover:underline"
-                aria-label={`להתקשר לטלפון ${CONFIG.phoneDisplay}`}
+                aria-label={`Call ${CONFIG.phoneDisplay}`}
               >
                 {CONFIG.phoneDisplay}
               </a>
@@ -499,35 +613,35 @@ function SiteFooter() {
             <li className="flex items-center gap-2">
               <MessageCircle className="size-4 text-brand" aria-hidden="true" />
               <a
-                href={waLink("שלום, אני מעוניין בהזמנת מונית גדולה.")}
+                href={waLink("Hello, I'd like to book a large taxi.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-bold hover:underline"
-                aria-label="לפתיחת שיחת וואטסאפ"
+                aria-label="Open a WhatsApp chat"
               >
-                וואטסאפ
+                WhatsApp
               </a>
             </li>
             <li className="flex items-center gap-2 text-muted-foreground">
               <Clock className="size-4 text-brand" aria-hidden="true" />
-              שעות פעילות: {CONFIG.hours}
+              Service hours: {EN.hours}
             </li>
             <li className="flex items-center gap-2 text-muted-foreground">
               <MapPin className="size-4 text-brand" aria-hidden="true" />
-              אזורי שירות: {CONFIG.areas.join(", ")}
+              Service areas: {EN.areas.join(", ")}
             </li>
             <li className="flex items-center gap-2 text-muted-foreground">
               <Users className="size-4 text-brand" aria-hidden="true" />
-              עד 8 נוסעים בנסיעה אחת
+              Up to 8 passengers per ride
             </li>
           </ul>
         </div>
 
         <div>
-          <h3 className="mb-3 text-sm font-bold">אזור השירות שלנו</h3>
+          <h3 className="mb-3 text-sm font-bold">Our service area</h3>
           <div className="overflow-hidden rounded-2xl shadow-[0_2px_14px_rgba(0,0,0,0.06)]">
             <iframe
-              title="מפת אזור השירות"
+              title="Service area map"
               src={CONFIG.mapsEmbedUrl}
               loading="lazy"
               className="h-56 w-full border-0"
@@ -537,32 +651,32 @@ function SiteFooter() {
         </div>
       </div>
       <p className="border-t border-border px-5 py-4 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} {CONFIG.businessName} · כל הזכויות שמורות
+        © {new Date().getFullYear()} {EN.businessName} · All rights reserved
       </p>
     </footer>
   );
 }
 
-function StickyBar() {
+function StickyBarEn() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 gap-3 bg-card p-3 shadow-[0_-4px_16px_rgba(0,0,0,0.12)] md:hidden">
       <a
-        href={waLink("שלום, אני מעוניין בהזמנת מונית גדולה.")}
+        href={waLink("Hello, I'd like to book a large taxi.")}
         target="_blank"
         rel="noopener noreferrer"
         className={`${btnSolid} w-full px-3 py-3 text-sm`}
-        aria-label="לשליחת הודעת וואטסאפ"
+        aria-label="Send a WhatsApp message"
       >
         <MessageCircle className="size-5" aria-hidden="true" />
-        וואטסאפ
+        WhatsApp
       </a>
       <a
         href={telLink}
         className={`${btnOutline} w-full px-3 py-3 text-sm`}
-        aria-label={`להתקשר לטלפון ${CONFIG.phoneDisplay}`}
+        aria-label={`Call ${CONFIG.phoneDisplay}`}
       >
         <Phone className="size-5" aria-hidden="true" />
-        התקשרו
+        Call
       </a>
     </div>
   );
