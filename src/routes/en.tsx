@@ -4,7 +4,7 @@ import {
   Phone,
   MessageCircle,
   BadgeCheck,
-  Coins,
+  
   Clock,
   Snowflake,
   Plane,
