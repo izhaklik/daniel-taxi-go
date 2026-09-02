@@ -229,7 +229,7 @@ const serviceIcons = {
 } as const;
 
 const btnBase =
-  "inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-base font-bold transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring";
+  "inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-base font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground focus-visible:ring-4 focus-visible:ring-ring";
 const btnSolid = `${btnBase} bg-brand text-brand-foreground hover:bg-brand-hover`;
 const btnOutline = `${btnBase} border-2 border-brand bg-transparent text-foreground hover:bg-brand/10`;
 
@@ -245,20 +245,26 @@ function SectionTitle({ children, sub }: { children: string; sub?: string }) {
 
 function LandingPageEn() {
   return (
-    <div dir="ltr" className="min-h-screen bg-background pb-24 md:pb-0">
+    <div dir="ltr" lang="en" className="min-h-screen bg-background pb-24 md:pb-0">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-xl focus:bg-brand focus:px-4 focus:py-3 focus:text-base focus:font-bold focus:text-brand-foreground"
+      >
+        Skip to main content
+      </a>
       {/* Language bar */}
-      <div className="bg-card">
+      <nav aria-label="Language selection" className="bg-card">
         <div className="mx-auto flex max-w-5xl justify-end px-5 py-2">
           <Link
             to="/"
-            className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-bold text-foreground transition-colors hover:bg-brand/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring"
+            className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-bold text-foreground transition-colors hover:bg-brand/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground focus-visible:ring-4 focus-visible:ring-ring"
             aria-label="Switch to the Hebrew version of the site"
           >
             <Globe className="size-4 text-brand" aria-hidden="true" />
-            עברית
+            <span lang="he" dir="rtl">עברית</span>
           </Link>
         </div>
-      </div>
+      </nav>
 
       {/* Hero */}
       <header className="relative isolate overflow-hidden">
@@ -285,7 +291,7 @@ function LandingPageEn() {
           </h1>
           <p
             className="mt-4 max-w-xl text-base leading-relaxed sm:text-lg"
-            style={{ color: "rgba(255,255,255,0.88)" }}
+            style={{ color: "#f5f5f5" }}
           >
             Large taxi service — {EN.vehicle} — anywhere in Israel. Airport transfers, Eilat,
             events, weddings, tours and employee shuttles. The driver speaks Hebrew and English —
@@ -315,8 +321,9 @@ function LandingPageEn() {
         </div>
       </header>
 
+      <main id="main">
       {/* Trust strip */}
-      <Reveal as="section" className="mx-auto max-w-5xl px-5 py-10">
+      <Reveal as="section" aria-label="Why choose us" className="mx-auto max-w-5xl px-5 py-10">
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-5">
           {EN.trust.map((item) => {
             const Icon = trustIcons[item.icon as keyof typeof trustIcons];
@@ -414,7 +421,7 @@ function LandingPageEn() {
               as="article"
               className="rounded-2xl bg-card p-5 shadow-[0_2px_14px_rgba(0,0,0,0.06)]"
             >
-              <div className="flex gap-0.5" aria-label={`Rated ${item.stars} out of 5`}>
+              <div className="flex gap-0.5" role="img" aria-label={`Rated ${item.stars} out of 5`}>
                 {Array.from({ length: item.stars }).map((_, i) => (
                   <Star
                     key={i}
@@ -448,6 +455,8 @@ function LandingPageEn() {
           </Accordion>
         </Reveal>
       </section>
+
+      </main>
 
       <SiteFooterEn />
       <StickyBarEn />
@@ -483,7 +492,7 @@ function QuoteFormEn() {
   };
 
   const fieldClass =
-    "w-full rounded-xl bg-background px-4 py-3 text-base text-foreground shadow-inner outline-none ring-1 ring-border transition focus:ring-4 focus:ring-ring";
+    "w-full rounded-xl bg-background px-4 py-3 text-base text-foreground shadow-inner ring-1 ring-border transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground focus:ring-4 focus:ring-ring";
 
   return (
     <section id="quote" className="mx-auto max-w-3xl px-5 py-10">
