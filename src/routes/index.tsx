@@ -4,7 +4,7 @@ import {
   Phone,
   MessageCircle,
   BadgeCheck,
-  Coins,
+  
   Clock,
   Snowflake,
   Plane,
@@ -82,7 +82,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          'מונית גדולה עד 8 נוסעים בבת ים, ראשון לציון, חולון ואילת. נסיעות לנתב"ג, אילת, אירועים, חתונות, טיולים והסעות עובדים. מחיר קבוע מראש, 24/7.',
+          'מונית גדולה עד 8 נוסעים בכל הארץ. נסיעות לנתב"ג, אילת, אירועים, חתונות, טיולים והסעות עובדים. נהג דובר עברית ואנגלית, 24/7.',
       },
       { property: "og:title", content: "דניאל taxi — מונית גדולה עד 8 נוסעים" },
       {
@@ -99,7 +99,7 @@ export const Route = createFileRoute("/")({
 
 const trustIcons = {
   badge: BadgeCheck,
-  price: Coins,
+  
   clock: Clock,
   car: Snowflake,
   languages: Languages,
