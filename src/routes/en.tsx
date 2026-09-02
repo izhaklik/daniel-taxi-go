@@ -632,7 +632,7 @@ function SiteFooterEn() {
               <Phone className="size-4 text-brand" aria-hidden="true" />
               <a
                 href={telLink}
-                className="font-bold hover:underline"
+                className="font-bold underline"
                 aria-label={`Call ${CONFIG.phoneDisplay}`}
               >
                 {CONFIG.phoneDisplay}
@@ -644,7 +644,7 @@ function SiteFooterEn() {
                 href={waLink("Hello, I'd like to book a large taxi.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold hover:underline"
+                className="font-bold underline"
                 aria-label="Open a WhatsApp chat"
               >
                 WhatsApp
@@ -678,9 +678,17 @@ function SiteFooterEn() {
           </div>
         </div>
       </div>
-      <p className="border-t border-border px-5 py-4 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} {EN.businessName} · All rights reserved
-      </p>
+      <div className="border-t border-border px-5 py-4 text-center text-xs text-muted-foreground">
+        <Link
+          to="/accessibility"
+          className="font-bold underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+        >
+          <span lang="he" dir="rtl">הצהרת נגישות</span> — Accessibility statement (IS 5568 / WCAG 2.1 AA)
+        </Link>
+        <p className="mt-2">
+          © {new Date().getFullYear()} {EN.businessName} · All rights reserved
+        </p>
+      </div>
     </footer>
   );
 }

@@ -518,7 +518,7 @@ function SiteFooter() {
               <Phone className="size-4 text-brand" aria-hidden="true" />
               <a
                 href={telLink}
-                className="font-bold hover:underline"
+                className="font-bold underline"
                 aria-label={`להתקשר לטלפון ${CONFIG.phoneDisplay}`}
               >
                 {CONFIG.phoneDisplay}
@@ -530,7 +530,7 @@ function SiteFooter() {
                 href={waLink("שלום, אני מעוניין בהזמנת מונית גדולה.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold hover:underline"
+                className="font-bold underline"
                 aria-label="לפתיחת שיחת וואטסאפ"
               >
                 וואטסאפ
@@ -564,9 +564,17 @@ function SiteFooter() {
           </div>
         </div>
       </div>
-      <p className="border-t border-border px-5 py-4 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} {CONFIG.businessName} · כל הזכויות שמורות
-      </p>
+      <div className="border-t border-border px-5 py-4 text-center text-xs text-muted-foreground">
+        <Link
+          to="/accessibility"
+          className="font-bold underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+        >
+          הצהרת נגישות (תקן ישראלי 5568 / WCAG 2.1 AA)
+        </Link>
+        <p className="mt-2">
+          © {new Date().getFullYear()} {CONFIG.businessName} · כל הזכויות שמורות
+        </p>
+      </div>
     </footer>
   );
 }
