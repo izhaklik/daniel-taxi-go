@@ -666,7 +666,8 @@ function SiteFooterEn() {
         </div>
 
         <div>
-          <h3 className="mb-3 text-sm font-bold">Our service area</h3>
+          <h3 className="mb-1 text-sm font-bold">Our service area</h3>
+          <p className="mb-3 text-sm text-muted-foreground">All of Israel</p>
           <div className="overflow-hidden rounded-2xl shadow-[0_2px_14px_rgba(0,0,0,0.06)]">
             <iframe
               title="Service area map"
