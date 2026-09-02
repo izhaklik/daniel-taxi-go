@@ -22,6 +22,7 @@ export const CONFIG = {
     { icon: "price", title: "מחיר קבוע מראש" },
     { icon: "clock", title: "זמינות 24/7" },
     { icon: "car", title: "רכב מרווח וממוזג" },
+    { icon: "languages", title: "נהג דובר עברית ואנגלית" },
   ],
 
   services: [
