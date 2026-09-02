@@ -386,14 +386,19 @@ function QuoteForm() {
         בקשת הצעת מחיר
       </SectionTitle>
       <Reveal className="rounded-2xl bg-card p-5 shadow-[0_2px_14px_rgba(0,0,0,0.06)]">
-        <form onSubmit={handleSubmit} className="grid gap-4 sm:grid-cols-2">
+        <form onSubmit={handleSubmit} noValidate={false} className="grid gap-4 sm:grid-cols-2">
+          <p className="text-sm text-muted-foreground sm:col-span-2">
+            כל השדות המסומנים בכוכבית (*) הם שדות חובה.
+          </p>
           <div>
             <label htmlFor="name" className="mb-1.5 block text-sm font-bold">
-              שם מלא
+              שם מלא <span aria-hidden="true">*</span>
             </label>
             <input
               id="name"
               required
+              aria-required="true"
+              autoComplete="name"
               value={form.name}
               onChange={update("name")}
               className={fieldClass}
@@ -402,11 +407,14 @@ function QuoteForm() {
           </div>
           <div>
             <label htmlFor="phone" className="mb-1.5 block text-sm font-bold">
-              טלפון
+              טלפון <span aria-hidden="true">*</span>
             </label>
             <input
               id="phone"
               required
+              aria-required="true"
+              aria-describedby="phone-hint"
+              autoComplete="tel"
               type="tel"
               inputMode="tel"
               value={form.phone}
@@ -414,14 +422,18 @@ function QuoteForm() {
               className={fieldClass}
               placeholder="050-0000000"
             />
+            <p id="phone-hint" className="mt-1.5 text-xs text-muted-foreground">
+              לדוגמה: 050-0000000
+            </p>
           </div>
           <div>
             <label htmlFor="origin" className="mb-1.5 block text-sm font-bold">
-              נקודת מוצא
+              נקודת מוצא <span aria-hidden="true">*</span>
             </label>
             <input
               id="origin"
               required
+              aria-required="true"
               value={form.origin}
               onChange={update("origin")}
               className={fieldClass}
@@ -430,11 +442,12 @@ function QuoteForm() {
           </div>
           <div>
             <label htmlFor="destination" className="mb-1.5 block text-sm font-bold">
-              יעד
+              יעד <span aria-hidden="true">*</span>
             </label>
             <input
               id="destination"
               required
+              aria-required="true"
               value={form.destination}
               onChange={update("destination")}
               className={fieldClass}
@@ -443,11 +456,12 @@ function QuoteForm() {
           </div>
           <div>
             <label htmlFor="date" className="mb-1.5 block text-sm font-bold">
-              תאריך הנסיעה
+              תאריך הנסיעה <span aria-hidden="true">*</span>
             </label>
             <input
               id="date"
               required
+              aria-required="true"
               type="date"
               value={form.date}
               onChange={update("date")}
@@ -456,11 +470,13 @@ function QuoteForm() {
           </div>
           <div>
             <label htmlFor="passengers" className="mb-1.5 block text-sm font-bold">
-              מספר נוסעים
+              מספר נוסעים <span aria-hidden="true">*</span>
             </label>
             <input
               id="passengers"
               required
+              aria-required="true"
+              aria-describedby="passengers-hint"
               type="number"
               min={1}
               max={8}
@@ -469,6 +485,9 @@ function QuoteForm() {
               className={fieldClass}
               placeholder="8"
             />
+            <p id="passengers-hint" className="mt-1.5 text-xs text-muted-foreground">
+              עד 8 נוסעים בנסיעה אחת
+            </p>
           </div>
           <button
             type="submit"

@@ -501,13 +501,18 @@ function QuoteFormEn() {
       </SectionTitle>
       <Reveal className="rounded-2xl bg-card p-5 shadow-[0_2px_14px_rgba(0,0,0,0.06)]">
         <form onSubmit={handleSubmit} className="grid gap-4 sm:grid-cols-2">
+          <p className="text-sm text-muted-foreground sm:col-span-2">
+            Fields marked with an asterisk (*) are required.
+          </p>
           <div>
             <label htmlFor="en-name" className="mb-1.5 block text-sm font-bold">
-              Full name
+              Full name <span aria-hidden="true">*</span>
             </label>
             <input
               id="en-name"
               required
+              aria-required="true"
+              autoComplete="name"
               value={form.name}
               onChange={update("name")}
               className={fieldClass}
@@ -516,11 +521,14 @@ function QuoteFormEn() {
           </div>
           <div>
             <label htmlFor="en-phone" className="mb-1.5 block text-sm font-bold">
-              Phone
+              Phone <span aria-hidden="true">*</span>
             </label>
             <input
               id="en-phone"
               required
+              aria-required="true"
+              aria-describedby="en-phone-hint"
+              autoComplete="tel"
               type="tel"
               inputMode="tel"
               value={form.phone}
@@ -528,14 +536,18 @@ function QuoteFormEn() {
               className={fieldClass}
               placeholder="050-0000000"
             />
+            <p id="en-phone-hint" className="mt-1.5 text-xs text-muted-foreground">
+              For example: 050-0000000
+            </p>
           </div>
           <div>
             <label htmlFor="en-origin" className="mb-1.5 block text-sm font-bold">
-              Pickup location
+              Pickup location <span aria-hidden="true">*</span>
             </label>
             <input
               id="en-origin"
               required
+              aria-required="true"
               value={form.origin}
               onChange={update("origin")}
               className={fieldClass}
@@ -544,11 +556,12 @@ function QuoteFormEn() {
           </div>
           <div>
             <label htmlFor="en-destination" className="mb-1.5 block text-sm font-bold">
-              Destination
+              Destination <span aria-hidden="true">*</span>
             </label>
             <input
               id="en-destination"
               required
+              aria-required="true"
               value={form.destination}
               onChange={update("destination")}
               className={fieldClass}
@@ -557,11 +570,12 @@ function QuoteFormEn() {
           </div>
           <div>
             <label htmlFor="en-date" className="mb-1.5 block text-sm font-bold">
-              Ride date
+              Ride date <span aria-hidden="true">*</span>
             </label>
             <input
               id="en-date"
               required
+              aria-required="true"
               type="date"
               value={form.date}
               onChange={update("date")}
@@ -570,11 +584,13 @@ function QuoteFormEn() {
           </div>
           <div>
             <label htmlFor="en-passengers" className="mb-1.5 block text-sm font-bold">
-              Number of passengers
+              Number of passengers <span aria-hidden="true">*</span>
             </label>
             <input
               id="en-passengers"
               required
+              aria-required="true"
+              aria-describedby="en-passengers-hint"
               type="number"
               min={1}
               max={8}
@@ -583,6 +599,9 @@ function QuoteFormEn() {
               className={fieldClass}
               placeholder="8"
             />
+            <p id="en-passengers-hint" className="mt-1.5 text-xs text-muted-foreground">
+              Up to 8 passengers per ride
+            </p>
           </div>
           <button
             type="submit"
