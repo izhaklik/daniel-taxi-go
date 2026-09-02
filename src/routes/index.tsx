@@ -132,6 +132,20 @@ function SectionTitle({ children, sub }: { children: string; sub?: string }) {
 function LandingPage() {
   return (
     <div className="min-h-screen bg-background pb-24 md:pb-0">
+      {/* Language bar */}
+      <div className="bg-card">
+        <div className="mx-auto flex max-w-5xl justify-end px-5 py-2">
+          <Link
+            to="/en"
+            className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-bold text-foreground transition-colors hover:bg-brand/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring"
+            aria-label="למעבר לגרסה האנגלית של האתר"
+          >
+            <Globe className="size-4 text-brand" aria-hidden="true" />
+            English
+          </Link>
+        </div>
+      </div>
+
       {/* Hero */}
       <header className="relative isolate overflow-hidden">
         <img
