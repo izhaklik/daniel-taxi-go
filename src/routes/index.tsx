@@ -76,13 +76,13 @@ const jsonLd = {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: 'דניאל taxi — מונית גדולה עד 10 נוסעים | זמינות 24/7' },
+      { title: 'דניאל taxi — מונית גדולה עד 8 נוסעים | זמינות 24/7' },
       {
         name: "description",
         content:
-          'מונית גדולה עד 10 נוסעים בבת ים, ראשון לציון, חולון ואילת. נסיעות לנתב"ג, אילת, אירועים, חתונות, טיולים והסעות עובדים. מחיר קבוע מראש, 24/7.',
+          'מונית גדולה עד 8 נוסעים בבת ים, ראשון לציון, חולון ואילת. נסיעות לנתב"ג, אילת, אירועים, חתונות, טיולים והסעות עובדים. מחיר קבוע מראש, 24/7.',
       },
-      { property: "og:title", content: "דניאל taxi — מונית גדולה עד 10 נוסעים" },
+      { property: "og:title", content: "דניאל taxi — מונית גדולה עד 8 נוסעים" },
       {
         property: "og:description",
         content: 'הזמנת מונית גדולה 24/7 — נתב"ג, אילת, אירועים, טיולים והסעות עובדים.',
@@ -135,7 +135,7 @@ function LandingPage() {
       <header className="relative isolate overflow-hidden">
         <img
           src={heroImage}
-          alt={`${CONFIG.businessName} — ${CONFIG.vehicle}, מונית גדולה עד 10 נוסעים`}
+          alt={`${CONFIG.businessName} — ${CONFIG.vehicle}, מונית גדולה עד 8 נוסעים`}
           width={1600}
           height={1104}
           className="absolute inset-0 -z-10 h-full w-full object-cover"
@@ -152,7 +152,7 @@ function LandingPage() {
             className="mt-5 text-3xl font-black leading-tight sm:text-5xl"
             style={{ color: "#ffffff" }}
           >
-            מונית גדולה עד 10 נוסעים — זמינות 24/7
+            מונית גדולה עד 8 נוסעים — זמינות 24/7
           </h1>
           <p
             className="mt-4 max-w-xl text-base leading-relaxed sm:text-lg"
@@ -507,7 +507,7 @@ function SiteFooter() {
             </li>
             <li className="flex items-center gap-2 text-muted-foreground">
               <Users className="size-4 text-brand" aria-hidden="true" />
-              עד 10 נוסעים בנסיעה אחת
+              עד 8 נוסעים בנסיעה אחת
             </li>
           </ul>
         </div>
