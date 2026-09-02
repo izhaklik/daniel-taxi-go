@@ -127,8 +127,6 @@ function SectionTitle({ children, sub }: { children: string; sub?: string }) {
 }
 
 function LandingPage() {
-  const areasText = CONFIG.areas.join(" · ");
-
   return (
     <div className="min-h-screen bg-background pb-24 md:pb-0">
       {/* Hero */}
