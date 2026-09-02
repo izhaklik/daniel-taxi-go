@@ -102,6 +102,7 @@ const trustIcons = {
   price: Coins,
   clock: Clock,
   car: Snowflake,
+  languages: Languages,
 } as const;
 
 const serviceIcons = {
