@@ -443,7 +443,7 @@ function QuoteForm() {
               required
               type="number"
               min={1}
-              max={10}
+              max={8}
               value={form.passengers}
               onChange={update("passengers")}
               className={fieldClass}
