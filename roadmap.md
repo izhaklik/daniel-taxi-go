@@ -11,3 +11,5 @@
 - [x] Mention the driver speaks Hebrew and English (for tourists)
 - [x] Remove "Price agreed upfront" wording from the English page
 - [x] Accessibility compliance: תקן ישראלי 5568 / WCAG 2.1 AA
+- [x] French page at /fr and Russian page at /ru (full translations)
+- [x] Language switcher with flag icons on all pages
