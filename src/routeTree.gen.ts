@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as EnRouteImport } from './routes/en'
 import { Route as FrRouteImport } from './routes/fr'
+import { Route as RuRouteImport } from './routes/ru'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const FrRoute = FrRouteImport.update({
   path: '/fr',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RuRoute = RuRouteImport.update({
+  id: '/ru',
+  path: '/ru',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
   '/en': typeof EnRoute
   '/fr': typeof FrRoute
+  '/ru': typeof RuRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
   '/en': typeof EnRoute
   '/fr': typeof FrRoute
+  '/ru': typeof RuRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/accessibility': typeof AccessibilityRoute
   '/en': typeof EnRoute
   '/fr': typeof FrRoute
+  '/ru': typeof RuRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/accessibility' | '/en' | '/fr'
+  fullPaths: '/' | '/accessibility' | '/en' | '/fr' | '/ru'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/accessibility' | '/en' | '/fr'
-  id: '__root__' | '/' | '/accessibility' | '/en' | '/fr'
+  to: '/' | '/accessibility' | '/en' | '/fr' | '/ru'
+  id: '__root__' | '/' | '/accessibility' | '/en' | '/fr' | '/ru'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +76,7 @@ export interface RootRouteChildren {
   AccessibilityRoute: typeof AccessibilityRoute
   EnRoute: typeof EnRoute
   FrRoute: typeof FrRoute
+  RuRoute: typeof RuRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FrRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ru': {
+      id: '/ru'
+      path: '/ru'
+      fullPath: '/ru'
+      preLoaderRoute: typeof RuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccessibilityRoute: AccessibilityRoute,
   EnRoute: EnRoute,
   FrRoute: FrRoute,
+  RuRoute: RuRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

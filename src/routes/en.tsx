@@ -17,13 +17,14 @@ import {
   ArrowRight,
   Users,
   MapPin,
-  Globe,
   Languages,
 } from "lucide-react";
 
 import heroImage from "@/assets/hero-van-taxi.jpg";
 import { CONFIG, telLink, waLink } from "@/lib/site-config";
 import { Reveal } from "@/components/landing/Reveal";
+import { LanguageSwitcher } from "@/components/landing/LanguageSwitcher";
+
 import {
   Accordion,
   AccordionContent,
@@ -252,19 +253,8 @@ function LandingPageEn() {
       >
         Skip to main content
       </a>
-      {/* Language bar */}
-      <nav aria-label="Language selection" className="bg-card">
-        <div className="mx-auto flex max-w-5xl justify-end px-5 py-2">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-bold text-foreground transition-colors hover:bg-brand/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground focus-visible:ring-4 focus-visible:ring-ring"
-            aria-label="Switch to the Hebrew version of the site"
-          >
-            <Globe className="size-4 text-brand" aria-hidden="true" />
-            <span lang="he" dir="rtl">עברית</span>
-          </Link>
-        </div>
-      </nav>
+      <LanguageSwitcher current="en" />
+
 
       {/* Hero */}
       <header className="relative isolate overflow-hidden">
