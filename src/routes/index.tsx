@@ -18,12 +18,13 @@ import {
   Users,
   MapPin,
   Languages,
-  Globe,
 } from "lucide-react";
 
 import heroImage from "@/assets/hero-van-taxi.jpg";
 import { CONFIG, telLink, waLink } from "@/lib/site-config";
 import { Reveal } from "@/components/landing/Reveal";
+import { LanguageSwitcher } from "@/components/landing/LanguageSwitcher";
+
 import {
   Accordion,
   AccordionContent,
@@ -138,19 +139,8 @@ function LandingPage() {
       >
         דלגו לתוכן המרכזי
       </a>
-      {/* Language bar */}
-      <nav aria-label="בחירת שפה" className="bg-card">
-        <div className="mx-auto flex max-w-5xl justify-end px-5 py-2">
-          <Link
-            to="/en"
-            className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-bold text-foreground transition-colors hover:bg-brand/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground focus-visible:ring-4 focus-visible:ring-ring"
-            aria-label="למעבר לגרסה האנגלית של האתר"
-          >
-            <Globe className="size-4 text-brand" aria-hidden="true" />
-            English
-          </Link>
-        </div>
-      </nav>
+      <LanguageSwitcher current="he" />
+
 
       {/* Hero */}
       <header className="relative isolate overflow-hidden">
