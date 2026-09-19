@@ -72,15 +72,15 @@ const NAV_LABEL: Record<LangCode, string> = {
 export function LanguageSwitcher({ current }: { current: LangCode }) {
   return (
     <nav aria-label={NAV_LABEL[current]} className="bg-card">
-      <ul className="mx-auto flex max-w-5xl flex-wrap items-center justify-end gap-1 px-5 py-2">
+      <ul className="mx-auto grid max-w-5xl grid-cols-4 gap-1 px-5 py-2">
         {LANGUAGES.map(({ code, to, label, dir, Flag }) => {
           const isCurrent = code === current;
           return (
-            <li key={code}>
+            <li key={code} className="flex">
               <Link
                 to={to}
                 aria-current={isCurrent ? "page" : undefined}
-                className={`inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-bold text-foreground transition-colors hover:bg-brand/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground focus-visible:ring-4 focus-visible:ring-ring ${
+                className={`inline-flex w-full items-center justify-center gap-1.5 rounded-lg px-1.5 py-1.5 text-xs font-bold text-foreground transition-colors hover:bg-brand/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground focus-visible:ring-4 focus-visible:ring-ring sm:text-sm ${
                   isCurrent ? "bg-brand/15" : ""
                 }`}
               >
