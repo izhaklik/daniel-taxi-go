@@ -71,7 +71,7 @@ const NAV_LABEL: Record<LangCode, string> = {
 
 export function LanguageSwitcher({ current }: { current: LangCode }) {
   return (
-    <nav aria-label={NAV_LABEL[current]} className="bg-card">
+    <nav aria-label={NAV_LABEL[current]} dir="ltr" className="bg-card">
       <ul className="mx-auto grid max-w-5xl grid-cols-4 gap-1 px-5 py-2">
         {LANGUAGES.map(({ code, to, label, dir, Flag }) => {
           const isCurrent = code === current;
