@@ -376,12 +376,12 @@ function LandingPageFr() {
               <Reveal
                 key={`${route.from}-${route.to}`}
                 as="li"
-                className="flex items-center justify-between gap-3 rounded-2xl bg-card p-4 shadow-[0_2px_14px_rgba(0,0,0,0.06)]"
+                className="flex min-w-0 items-center justify-between gap-3 overflow-hidden rounded-2xl bg-card p-4 shadow-[0_2px_14px_rgba(0,0,0,0.06)]"
               >
-                <div className="flex items-center gap-2 text-sm font-bold">
-                  <span className="truncate">{route.from}</span>
+                <div className="flex min-w-0 flex-1 items-center gap-2 text-sm font-bold">
+                  <span className="min-w-0 truncate">{route.from}</span>
                   <ArrowRight className="size-4 shrink-0 text-brand" aria-hidden="true" />
-                  <span className="truncate">{route.to}</span>
+                  <span className="min-w-0 truncate">{route.to}</span>
                 </div>
                 <a
                   href={waLink(
