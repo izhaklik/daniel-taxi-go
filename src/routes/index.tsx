@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { AccessibilityMenu } from "@/components/landing/AccessibilityMenu";
 import { useState } from "react";
 import {
   Phone,
@@ -335,6 +336,7 @@ function LandingPage() {
 
       <SiteFooter />
       <StickyBar />
+      <AccessibilityMenu lang="he" />
     </div>
   );
 }
