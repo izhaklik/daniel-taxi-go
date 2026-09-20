@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { AccessibilityMenu } from "@/components/landing/AccessibilityMenu";
 import { useState } from "react";
 import {
   Phone,
@@ -217,7 +218,7 @@ function LandingPage() {
 
       {/* Services */}
       <section id="services" className="mx-auto max-w-5xl px-5 py-10">
-        <SectionTitle sub="בחרו שירות ושלחו הודעה — נחזור אליכם עם מחיר סגור">
+        <SectionTitle sub="בחרו שירות ושלחו הודעה">
           השירותים שלנו
         </SectionTitle>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -252,7 +253,7 @@ function LandingPage() {
 
       {/* Popular routes */}
       <section id="routes" className="mx-auto max-w-5xl px-5 py-10">
-        <SectionTitle sub="שלחו הודעה ונחזור אליכם עם מחיר סגור מראש">
+        <SectionTitle sub="שלחו הודעה ונחזור אליכם בהקדם">
           מסלולים פופולריים
         </SectionTitle>
         <ul className="grid gap-3 sm:grid-cols-2">
@@ -335,6 +336,7 @@ function LandingPage() {
 
       <SiteFooter />
       <StickyBar />
+      <AccessibilityMenu lang="he" />
     </div>
   );
 }
