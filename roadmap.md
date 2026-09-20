@@ -13,3 +13,4 @@
 - [x] Accessibility compliance: תקן ישראלי 5568 / WCAG 2.1 AA
 - [x] French page at /fr and Russian page at /ru (full translations)
 - [x] Language switcher with flag icons on all pages
+- [x] Accessibility pop-up menu on all 4 language pages + supporting styles
